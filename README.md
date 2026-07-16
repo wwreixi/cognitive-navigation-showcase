@@ -74,6 +74,28 @@ AI 金融科技公司合规风险尽调报告
 
 ---
 
+### 产品矩阵
+
+认知导航产品体系由三个公开仓库组成，覆盖**引擎 → 协作 → 落地**完整链路：
+
+| 仓库 | 定位 | 角色 |
+|------|------|------|
+| [agent-trace-diagnostics](https://github.com/wwreixi/agent-trace-diagnostics) | Agent 运行时认知安全诊断工具（基于动力学系统理论） | 🔧 核心引擎 |
+| [multi-agent-collaboration-navigation](https://github.com/wwreixi/multi-agent-collaboration-navigation) | 多 Agent 群协作合规质量验证与实时干预 | 🔗 协作框架 |
+| [cognitive-navigation-showcase](https://github.com/wwreixi/cognitive-navigation-showcase) | 标杆案例：三 Agent 金融尽调合规验证 | 📋 落地验证（本仓库） |
+
+```
+agent-trace-diagnostics          multi-agent-collaboration-navigation
+    (核心诊断引擎)                        (群协作导航框架)
+         │                                    │
+         └──────────────┬─────────────────────┘
+                        ▼
+          cognitive-navigation-showcase
+            (标杆案例 · 落地验证)
+```
+
+---
+
 ### 相关文档
 
 - [商业价值简报](./docs/business-brief.md)
