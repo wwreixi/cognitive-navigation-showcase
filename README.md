@@ -105,4 +105,66 @@ agent-trace-diagnostics          multi-agent-collaboration-navigation
 
 ---
 
+### 如何复现
+
+#### 前置条件
+
+- Python 3.10+
+- 认知导航诊断引擎（参见 [agent-trace-diagnostics](https://github.com/wwreixi/agent-trace-diagnostics)）
+- 支持 Agent 群协作的平台（如阿里 Qoder CN）
+
+#### 快速步骤
+
+```bash
+# 1. 克隆本仓库
+git clone https://github.com/wwreixi/cognitive-navigation-showcase.git
+cd cognitive-navigation-showcase
+
+# 2. 启动诊断引擎（默认 8000 端口）
+#    详见 agent-trace-diagnostics 仓库的 README
+python -m agent_trace_diagnostics.server
+
+# 3. 按三 Agent 链路依次执行
+#    法规研究员 → 合规分析师 → 报告撰写官
+#    每个 Agent 执行完毕后调用诊断 API 获取 S/T/C/D/zone
+#    配置参考见 agents/agent-config.md
+
+# 4. 验证诊断一致性
+#    三个 Agent 的输出应完全一致（本案例：0.65/0.95/0.20/0.10/YELLOW）
+
+# 5. 生成报告
+#    参照 examples/final-report.md 结构组装最终尽调报告
+```
+
+#### 诊断 API 调用示例
+
+```python
+import requests
+
+resp = requests.post(
+    "http://localhost:8000/diagnosis",
+    json={"query": "法规/风险摘要文本"}
+)
+print(resp.json())
+# {'S': 0.65, 'T': 0.95, 'C': 0.20, 'D': 0.10, 'zone': 'YELLOW'}
+```
+
+#### 公式验证
+
+复现后可用以下公式校验诊断引擎输出：
+
+```
+S = T - C - D
+```
+
+在 GREEN 区（S ≥ 0.70）为健康，YELLOW 区（0.30 ~ 0.70）需关注，RED 区（< 0.15）需立即干预。
+
+---
+
+### License
+
+本项目基于 [MIT License](./LICENSE) 开源，欢迎引用和二次开发。
+
+---
+
 **案例状态**：✅ 已完成 | **最后更新**：2026 年 7 月
