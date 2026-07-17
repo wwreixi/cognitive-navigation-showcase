@@ -98,10 +98,19 @@ agent-trace-diagnostics          multi-agent-collaboration-navigation
 
 ### 相关文档
 
+**基础文档**
+
 - [商业价值简报](./docs/business-brief.md)
 - [完整尽调报告](./examples/final-report.md)
 - [Agent 配置参考](./agents/agent-config.md)
 - [理论框架简介](./docs/theory-framework.md)
+
+**WorkBuddy 平台复现测试（双组对比）**
+
+| 场景 | A 组（无认知导航） | B 组（有认知导航） | 对比报告 |
+|------|------|------|------|
+| 三 Agent 金融尽调 | [基线报告](./examples/workbuddy-group-a-baseline.md) | [诊断报告](./examples/workbuddy-group-b-diagnosis.md) | [对比报告](./examples/workbuddy-comparison-report.md) |
+| 五 Agent 代码编写 | [基线报告](./examples/code-test-group-a-baseline.md) | [诊断报告](./examples/code-test-group-b-diagnosis.md) | [对比报告](./examples/code-test-comparison-report.md) |
 
 ---
 
