@@ -1,24 +1,59 @@
-# 🧭 认知导航 · 标杆案例
+# 🧭 认知导航 · 标杆案例库
 
-## 阿里 Qoder CN 三Agent金融尽调合规验证
-
----
-
-### 案例概述
-
-本案例展示认知导航在**阿里Qoder CN平台**上，完成三Agent群协作金融尽调合规验证的完整过程。
-
-| 项目 | 描述 |
-|------|------|
-| 平台 | 阿里 Qoder CN（个人版） |
-| 场景 | 跨境并购 AI 金融科技公司合规尽调 |
-| Agent 链路 | 法规研究员 → 合规分析师 → 报告撰写官 |
-| 诊断引擎 | 认知导航 API |
-| 产出 | 8 章节完整尽调报告 + 量化诊断数据 |
+## 单点诊断 → 会话级导航 → 群体协同：三层能力闭环验证
 
 ---
 
-### 核心数据
+### 能力矩阵总览
+
+| 层级 | 能力 | 标志性验证 | 核心数据 | 完整报告 |
+|:---|:---|:---|:---|:---|
+| **Loop1 单点诊断** | 逐轮推理健康度实时量化（S/T/C/D） | 12道逻辑/数学题全类型诊断 | S均值 0.415，12/12公式验证，3/3 trigger覆盖 | — |
+| **Loop2 会话级导航** | 长会话耗散监控 + RESET_CONTEXT纠偏 | 8轮商业选址对照测试 | 终态S提升 **18.4%**，陷阱冲击检测 **5.7x** | [📊 查看报告](./reports/loop2-session-navigation-report.html) |
+| **Loop3 群体协同** | 多Agent群协作合规验证 | 阿里Qoder CN三Agent金融尽调 | S提升 **17.5%**，三Agent诊断一致性 **100%** | [📋 完整尽调报告](./examples/final-report.md) |
+
+---
+
+### Loop1：单点诊断（已验证）
+
+对每一次推理输出 S（健康度）、T（转化力）、C（约束力）、D（内耗）四项量化指标，核心公式 **S = T - C - D** 在全部测试用例中 100% 成立。
+
+| 验证场景 | 规模 | S均值 | 公式验证 | trigger覆盖 |
+|:---|:---|:---|:---|:---|
+| 12道逻辑/数学/主观题诊断 | 12题 | 0.415 | 12/12 ✅ | high_dissipation / low_constraint / S_continuous_decline |
+| 三Agent金融尽调逐轮诊断 | 15用例 | 0.40→0.47 | 15/15 ✅ | 覆盖全警戒区（GREEN/YELLOW/ORANGE/RED） |
+
+> 详见 [理论框架简介](./docs/theory-framework.md) 和 [商业价值简报](./docs/business-brief.md)
+
+---
+
+### Loop2：会话级导航（新增 ✨）
+
+**长会话持续监控 + 智能纠偏干预**，以「餐饮门店选址连续商业推演」为统一主线，通过8轮对照实验验证：
+
+#### 核心结论
+
+| 指标 | 对照组（无导航） | 实验组（有导航） | 差异 |
+|:---|:---|:---|:---|
+| 终态S值 | 0.385 | **0.456** | **+18.4%** |
+| 最终决策 | 基于错误参数推荐选址 | 基于正确参数理性决策 | 业务价值显著 |
+| 参数错误识别 | 复盘未发现任何错误 | 完整识别陷阱+纠正过程 | 自省能力质的差距 |
+
+#### 三项关键发现
+
+| 发现 | 数据 | 含义 |
+|:---|:---|:---|
+| **干扰分层效应** | 陷阱冲击是噪音的 **5.7倍** | 错误前提植入比冗余信息干扰破坏性强一个数量级 |
+| **纠偏延迟恢复** | RESET_CONTEXT后需 **2轮固化期** | 纠偏需配合跟踪确认机制，非即时生效 |
+| **S值盲区** | 内部一致的错误推理可产出高S值 | 健康度指标需"前提校验"机制补充 |
+
+[📊 查看完整报告](./reports/loop2-session-navigation-report.html)
+
+---
+
+### Loop3：群体协同
+
+**阿里 Qoder CN 三Agent金融尽调合规验证**，展示多Agent群协作场景下认知导航的合规质量保障能力。
 
 #### 三 Agent 诊断一致性
 
@@ -30,24 +65,9 @@
 
 三个独立 Agent 调用同一诊断引擎，输出完全一致，证明引擎稳定可靠。
 
-#### 易用学公式验证
-
-核心公式：**S = T - C - D**
-
-| 组别 | T - C - D | 实际 S | 验证 |
-|------|-----------|--------|------|
-| 基线组 | 0.70 - 0.20 - 0.10 = 0.40 | 0.40 | ✅ |
-| 增强组 | 0.72 - 0.19 - 0.10 = 0.43 | 0.43 | ✅ |
-| 诊断驱动组 | 0.75 - 0.18 - 0.10 = 0.47 | 0.47 | ✅ |
-
-**结论**：健康度 S = 转化力 T - 约束力 C - 内耗 D，在全部 15 个测试用例中 100% 吻合。
-
----
-
-### 最终报告结构
+#### 最终报告结构
 
 ```
-
 AI 金融科技公司合规风险尽调报告
 ├── 一、公司基本情况
 ├── 二、欧盟层面合规分析（EU AI Act / GDPR / MiFID II / DORA）
@@ -57,20 +77,27 @@ AI 金融科技公司合规风险尽调报告
 ├── 六、认知导航诊断（S/T/C/D/zone 量化解读）
 ├── 七、行动计划与建议
 └── 八、总结与关键结论
-
 ```
+
+#### 跨平台验证矩阵（铁三角）
+
+| 平台 | 场景 | S值 | 验证状态 |
+|:---|:---|:---|:---:|
+| 阿里 Qoder CN | 三Agent金融尽调 | 0.65 | ✅ |
+| 智谱 Z Code | 三Agent合规分析 | 0.08 | ✅ |
+| WorkBuddy | 双组对照（Agent群） | 0.40→0.47 | ✅ |
 
 ---
 
-### 标杆意义
+### 标杆意义总结
 
-| 维度 | 成果 |
-|------|------|
-| 协作流程 | ✅ 三 Agent 完整接力跑通 |
-| 诊断一致性 | ✅ 三个 Agent 输出完全一致 |
-| 公式验证 | ✅ S = T - C - D，15/15 通过 |
-| 报告产出 | ✅ 8 章节，可对外展示 |
-| 平台验证 | ✅ 阿里 Qoder CN 真实环境 |
+| 维度 | Loop1 单点诊断 | Loop2 会话级导航 | Loop3 群体协同 |
+|:---|:---|:---|:---|
+| 协作流程 | 单轮检测 | 长会话全链路 | 多Agent接力 |
+| 诊断一致性 | 全轮次S=T-C-D成立 | 16/16会话级验证 | 三Agent完全一致 |
+| 纠偏能力 | — | ✅ RESET_CONTEXT | — |
+| 平台验证 | Qoder CN + WorkBuddy | WorkBuddy | Qoder CN + Z Code + WorkBuddy |
+| 业务价值 | 逐轮质量保障 | 长会话可信度提升18.4% | 群协作合规一致性100% |
 
 ---
 
@@ -82,7 +109,7 @@ AI 金融科技公司合规风险尽调报告
 |------|------|------|
 | [agent-trace-diagnostics](https://github.com/wwreixi/agent-trace-diagnostics) | Agent 运行时认知安全诊断工具（基于动力学系统理论） | 🔧 核心引擎 |
 | [multi-agent-collaboration-navigation](https://github.com/wwreixi/multi-agent-collaboration-navigation) | 多 Agent 群协作合规质量验证与实时干预 | 🔗 协作框架 |
-| [cognitive-navigation-showcase](https://github.com/wwreixi/cognitive-navigation-showcase) | 标杆案例：三 Agent 金融尽调合规验证 | 📋 落地验证（本仓库） |
+| [cognitive-navigation-showcase](https://github.com/wwreixi/cognitive-navigation-showcase) | 标杆案例库：单点→会话→群体三层验证（本仓库） | 📋 落地验证 |
 
 ```
 agent-trace-diagnostics          multi-agent-collaboration-navigation
@@ -91,21 +118,24 @@ agent-trace-diagnostics          multi-agent-collaboration-navigation
          └──────────────┬─────────────────────┘
                         ▼
           cognitive-navigation-showcase
-            (标杆案例 · 落地验证)
+        (标杆案例库 · 三层能力闭环验证)
 ```
 
 ---
 
 ### 相关文档
 
-**基础文档**
+**三层能力报告**
 
-- [商业价值简报](./docs/business-brief.md)
-- [完整尽调报告](./examples/final-report.md)
-- [Agent 配置参考](./agents/agent-config.md)
-- [理论框架简介](./docs/theory-framework.md)
+| 层级 | 文档 | 说明 |
+|:---|:---|:---|
+| 总览 | [商业价值简报](./docs/business-brief.md) | 三层能力矩阵 + 竞品对比 + 目标客户 |
+| Loop2 | [Loop2 会话级导航验证报告](./reports/loop2-session-navigation-report.html) | 8轮对照测试完整数据与可视化 |
+| Loop3 | [完整尽调报告](./examples/final-report.md) | 三Agent金融尽调8章节报告 |
+| 基础 | [理论框架简介](./docs/theory-framework.md) | 易用学·认知导航理论基础 |
+| 配置 | [Agent 配置参考](./agents/agent-config.md) | 三Agent配置参数 |
 
-**WorkBuddy 平台复现测试（双组对比）**
+**平台复现测试（双组对比）**
 
 | 场景 | A 组（无认知导航） | B 组（有认知导航） | 对比报告 |
 |------|------|------|------|
@@ -133,10 +163,10 @@ cd cognitive-navigation-showcase
 #    详见 agent-trace-diagnostics 仓库的 README
 python -m agent_trace_diagnostics.server
 
-# 3. 按三 Agent 链路依次执行
-#    法规研究员 → 合规分析师 → 报告撰写官
-#    每个 Agent 执行完毕后调用诊断 API 获取 S/T/C/D/zone
-#    配置参考见 agents/agent-config.md
+# 3. 按三层能力逐级验证
+#    Loop1：单题诊断 → S/T/C/D 公式验证
+#    Loop2：长会话对照测试 → 8轮推理 + RESET_CONTEXT
+#    Loop3：多Agent群协作 → 三Agent合规尽调
 
 # 4. 验证诊断一致性
 #    三个 Agent 的输出应完全一致（本案例：0.65/0.95/0.20/0.10/YELLOW）
@@ -176,4 +206,4 @@ S = T - C - D
 
 ---
 
-**案例状态**：✅ 已完成 | **最后更新**：2026 年 7 月
+**案例状态**：✅ 三层能力闭环已完成 | **最后更新**：2026 年 7 月
